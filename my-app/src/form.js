@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Form({ inputVal, change, submit }) {
+export default function Form({ inputVal, change, submit, disabled }) {
   return (
     <div className="App">
       <div className="input">
+        <h2>Sign up!</h2>
         <form onSubmit={submit}>
           <div className="label">
             <input
@@ -44,11 +45,7 @@ export default function Form({ inputVal, change, submit }) {
             </label>
           </div>
           <div className="label">
-            <button
-              disabled={!inputVal.email || !inputVal.name || !inputVal.role}
-            >
-              Submit
-            </button>
+            <button disabled={disabled}>Submit</button>
           </div>
         </form>
       </div>

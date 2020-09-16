@@ -41,7 +41,7 @@ body {
 
 .main {
   width: auto;
-  margin: 5%;
+  margin: 0% auto;
   display: flex;
   flex-flow: row wrap;
 }
@@ -51,12 +51,16 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: grey;
-  width: 20%;
+  width: 28%;
   margin: 2%;
   border: 4px black solid;
 }
 .label {
   margin: 10% auto;
+}
+.errors {
+  text-align: center;
+  color: red;
 }
 
 @keyframes App-logo-spin {
