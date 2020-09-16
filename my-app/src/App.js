@@ -1,29 +1,41 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Form from "./form";
 
 const baseData = [
   {
     name: "Reuben",
     email: "reuben@email.com",
-    role: "Student",
+    password: "qdwjnqwd",
+    tos: true,
   },
   {
     name: "Jeff",
     email: "jeff@email.com",
-    role: "Teacher",
+    password: "dwqqdw",
+    tos: true,
   },
 ];
 
 const emptyInput = {
   name: "",
   email: "",
-  role: "",
+  password: "",
+  tos: false,
+};
+
+const emptyInputErrors = {
+  name: "",
+  email: "",
+  password: "",
+  tos: "",
 };
 
 function App() {
   const [member, setMember] = useState(baseData);
   const [inputVal, setInputVal] = useState(emptyInput);
+  const [inputError, setInputError] = useState(emptyInputErrors);
+  const [disabled, setDisabled] = useState(true);
 
   const change = (evt) => {
     const { name, value } = evt.target;
@@ -36,63 +48,23 @@ function App() {
     setInputVal(emptyInput);
   };
 
-  //Name
-  //Email
-  //Password
-  //Terms of Service (checkbox)
-  //A Submit button to send our form data to the server.
-
   return (
-    <div className="App">
-      <div className="input">
-        <form onSubmit={submit}>
-          <div className="label">
-            <input
-              type="text"
-              name="name"
-              value={inputVal.name}
-              onChange={change}
-              placeholder="Name Here"
-            />
-          </div>
-          <div className="label">
-            <input
-              type="email"
-              name="email"
-              value={inputVal.email}
-              onChange={change}
-              placeholder="Email Here"
-            />{" "}
-          </div>
-          <div className="label">
-            <label>
-              Terms of Service:
-              <input type="checkbox" />
-            </label>
-          </div>
-          <div className="label">
-            <button
-              disabled={!inputVal.email || !inputVal.name || !inputVal.role}
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-        <div className="main">
-          {member.map((item, idx) => {
-            return (
-              <>
-                <div className="box" key={idx}>
-                  <h3>Name: {item.name}</h3>
-                  <p>Email: {item.email}</p>
-                  <p>Role: {item.role}</p>
-                </div>
-              </>
-            );
-          })}
-        </div>
+    <>
+      <Form inputVal={inputVal} change={change} submit={submit} />
+      <div className="main">
+        {member.map((item, idx) => {
+          return (
+            <>
+              <div className="box" key={idx}>
+                <h3>Name: {item.name}</h3>
+                <p>Email: {item.email}</p>
+                <p>Pass: {item.password}</p>
+              </div>
+            </>
+          );
+        })}
       </div>
-    </div>
+    </>
   );
 }
 
