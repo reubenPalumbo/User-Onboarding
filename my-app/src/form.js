@@ -45,7 +45,9 @@ export default function Form({ inputVal, change, submit, disabled }) {
             </label>
           </div>
           <div className="label">
-            <button disabled={disabled}>Submit</button>
+            <button disabled={disabled} id="subutton">
+              Submit
+            </button>
           </div>
         </form>
       </div>

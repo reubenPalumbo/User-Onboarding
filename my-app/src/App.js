@@ -42,6 +42,7 @@ function App() {
 
     postMember(newMember);
     setInputVal(emptyInput);
+    setDisabled(!disabled);
   };
 
   const checks = yup.object().shape({
@@ -117,9 +118,9 @@ function App() {
         disabled={disabled}
       />
       <div className="errors">
-        <h4>{inputError.name}</h4>
-        <h4>{inputError.email}</h4>
-        <h4>{inputError.password}</h4>
+        <h4 id="errorName">{inputError.name}</h4>
+        <h4 id="errorPass">{inputError.password}</h4>
+        <h4 id="errorEmail">{inputError.email}</h4>
       </div>
       <div className="main">
         {member.map((item) => {
